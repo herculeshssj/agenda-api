@@ -1,7 +1,8 @@
 """
     Programa principal, contendo os métodos REST da API.
 """
-
+import db
+import json
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -17,8 +18,25 @@ def ola_mundo():
 """
     GET - /
 """
+@app.get("/")
 def consulta_agenda():
-    pass
+    agendas = db.buscar_agenda()
+    resultado = []
+    if agendas is not None:
+        for agenda in agendas:
+            dados = {
+                "id": agenda[0],
+                "titulo": agenda[1],
+                "descricao": agenda[2],
+                "dataInicio": agenda[3],
+                "dataFim": agenda[4],
+                "local": agenda[5],
+                "estadoAtualAgenda": agenda[6]
+            }
+            resultado.append(dados)
+            
+    return resultado
+
 
 """
     POST - /
