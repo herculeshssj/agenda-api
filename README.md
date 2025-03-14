@@ -32,3 +32,11 @@ Faça a instalação das dependências:
 ```sh
 pip install -r requirements.txt
 ```
+
+Para executar a API:
+
+```sh
+uvicorn main:app --reload
+```
+
+A API estará acessível no endereço http://127.0.0.1/8000. A lista completa de endpoints está disponível em http://127.0.0.1/8000/docs.
