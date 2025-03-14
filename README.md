@@ -27,11 +27,33 @@ Ative o ambiente virtual:
 source venv/bin/activate
 ```
 
+**Dependências**
+
 Faça a instalação das dependências:
 
 ```sh
 pip install -r requirements.txt
 ```
+
+**Base de dados**
+
+O projeto acompanha uma base SQlite com a tabela já criada. Segue abaixo o esquema da tabela:
+
+```sql
+create table agenda(
+    id integer primary key,
+    titulo text not null,
+    descricao text null,
+    data_inicio text not null,
+    data_fim text null,
+    local text null,
+    estado_atual_agenda text not null
+);
+```
+
+Os valores dos campos 'data_inicio' e 'data_fim' são salvos no formato 'YYYY-MM-DD HH:MM:SS'.
+
+**Execução**
 
 Para executar a API:
 
