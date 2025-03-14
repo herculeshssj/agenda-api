@@ -4,6 +4,7 @@
 import db
 import json
 from fastapi import FastAPI
+from model import NovaAgenda, EstadoAgenda, Agenda
 
 app = FastAPI()
 
@@ -16,6 +17,8 @@ def ola_mundo():
 
 
 """
+    Lista as agendas cadastradas
+
     GET - /
 """
 @app.get("/")
@@ -39,10 +42,23 @@ def consulta_agenda():
 
 
 """
+    Cadastra uma nova agenda
+
     POST - /
 """
-def cadastra_agenda():
-    pass
+@app.post("/")
+def cadastra_agenda(novaAgenda: NovaAgenda):
+    agenda = Agenda(id=0,
+                    titulo=novaAgenda.titulo,
+                    descricao=novaAgenda.descricao,
+                    dataInicio=novaAgenda.dataInicio,
+                    dataFim=novaAgenda.dataFim,
+                    local=novaAgenda.local,
+                    estadoAtualAgenda=EstadoAgenda.Recebido.value)
+
+    db.cadastrar_agenda(agenda)
+    return {"mensagem": "Agenda cadastrada com sucesso"}
+
 
 """
     PUT - /{id}

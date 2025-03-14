@@ -21,6 +21,16 @@ class Agenda(BaseModel):
 
 
 """
+    Classe NovaAgenda, contendo os campos necessários para o cadastro de uma nova agenda.
+"""
+class NovaAgenda(BaseModel):
+    titulo: str
+    descricao: str
+    dataInicio: datetime
+    dataFim: datetime
+    local: str
+
+"""
     Enumerador que representa os estados possíveis de uma agenda.
 """
 class EstadoAgenda(enum.Enum):
