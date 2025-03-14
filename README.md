@@ -11,7 +11,7 @@ API REST para gestão de agenda de compromissos.
 
 Faça o clone do repositório:
 
-```
+```sh
 git clone https://github.com/herculeshssj/agenda-api.git
 ```
 
@@ -25,4 +25,10 @@ Ative o ambiente virtual:
 
 ```sh
 source venv/bin/activate
+```
+
+Faça a instalação das dependências:
+
+```sh
+pip install -r requirements.txt
 ```
