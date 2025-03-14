@@ -1,0 +1,3 @@
+"""
+    Entidades utilizadas na API.
+"""
