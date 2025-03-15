@@ -47,3 +47,13 @@ def atualizar_agenda(agenda: Agenda):
                         agenda.local, 
                         agenda.id))
         conn.commit()
+
+
+"""
+    Método para deletar uma agenda.
+"""
+def deletar_agenda(id: int):
+    with closing(sqlite3.connect('agenda.sqlite')) as conn:
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM agenda WHERE id = ?', (id,))
+        conn.commit()

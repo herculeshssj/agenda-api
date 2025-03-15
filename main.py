@@ -2,7 +2,6 @@
     Programa principal, contendo os métodos REST da API.
 """
 import db
-import json
 from fastapi import FastAPI
 from model import EstadoAgenda, Agenda, AgendaVO
 
@@ -61,6 +60,8 @@ def cadastra_agenda(novaAgenda: AgendaVO):
 
 
 """
+    Atualiza uma agenda existente.
+
     PUT - /{id}
 """
 @app.put("/{id}")
@@ -78,10 +79,15 @@ def atualiza_agenda(id: int, agenda: AgendaVO):
 
 
 """
+    Deleta uma agenda existente.
+
     DELETE - /{id}
 """
-def exclui_agenda():
-    pass
+@app.delete("/{id}")
+def exclui_agenda(id: int):
+    db.deletar_agenda(id)
+    return {"mensagem": "Agenda excluída com sucesso"}
+    
 
 
 """
