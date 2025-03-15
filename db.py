@@ -31,3 +31,19 @@ def cadastrar_agenda(agenda: Agenda):
                         agenda.local, 
                         agenda.estadoAtualAgenda))
         conn.commit()
+
+
+"""
+    Método para atualizar uma agenda.
+"""
+def atualizar_agenda(agenda: Agenda):
+    with closing(sqlite3.connect('agenda.sqlite')) as conn:
+        cursor = conn.cursor()
+        cursor.execute('UPDATE agenda SET titulo = ?, descricao = ?, data_inicio = ?, data_fim = ?, local = ? WHERE id = ?', 
+                       (agenda.titulo, 
+                        agenda.descricao, 
+                        datetime.strptime(str(agenda.dataInicio), '%Y-%m-%d %H:%M:%S'),
+                        datetime.strptime(str(agenda.dataFim), '%Y-%m-%d %H:%M:%S'),
+                        agenda.local, 
+                        agenda.id))
+        conn.commit()

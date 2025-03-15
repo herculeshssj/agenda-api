@@ -63,8 +63,18 @@ def cadastra_agenda(novaAgenda: AgendaVO):
 """
     PUT - /{id}
 """
-def atualiza_agenda():
-    pass
+@app.put("/{id}")
+def atualiza_agenda(id: int, agenda: AgendaVO):
+    agenda = Agenda(id=id,
+                    titulo=agenda.titulo,
+                    descricao=agenda.descricao,
+                    dataInicio=agenda.dataInicio,
+                    dataFim=agenda.dataFim,
+                    local=agenda.local,
+                    estadoAtualAgenda='')
+
+    db.atualizar_agenda(agenda)
+    return {"mensagem": "Agenda atualizada com sucesso"}
 
 
 """
