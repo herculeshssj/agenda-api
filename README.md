@@ -72,3 +72,24 @@ Para executar os testes:
 ```sh
 pytest test_main.py
 ```
+
+## Deploy em produção
+
+**Requisitos**
+- Docker
+
+**Construção da imagem**
+
+Para construir a imagem Docker:
+
+```sh
+docker build -t agenda-api:latest .
+```
+
+Copie o arquivo **agenda.sqlite** para o diretório do seu usuário.
+
+Para executar o container Docker:
+
+```sh
+docker run --name agenda-api -p 8000:8000 -v ~/agenda.sqlite:/usr/src/app/agenda.sqlite -d agenda-api:latest
+```
