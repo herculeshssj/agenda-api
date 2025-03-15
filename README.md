@@ -62,3 +62,13 @@ uvicorn main:app --reload
 ```
 
 A API estará acessível no endereço http://127.0.0.1/8000. A lista completa de endpoints está disponível em http://127.0.0.1/8000/docs.
+
+**Testes**
+
+Para rodar os testes unitários, é necessário a API estar em execução.
+
+Para executar os testes:
+
+```sh
+pytest test_main.py
+```
