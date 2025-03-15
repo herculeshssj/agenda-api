@@ -21,9 +21,9 @@ class Agenda(BaseModel):
 
 
 """
-    Classe NovaAgenda, contendo os campos necessários para o cadastro de uma nova agenda.
+    Classe AgendaVO, contendo os campos necessários para o cadastro e atualização de agendas.
 """
-class NovaAgenda(BaseModel):
+class AgendaVO(BaseModel):
     titulo: str
     descricao: str
     dataInicio: datetime

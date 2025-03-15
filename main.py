@@ -4,7 +4,7 @@
 import db
 import json
 from fastapi import FastAPI
-from model import NovaAgenda, EstadoAgenda, Agenda
+from model import EstadoAgenda, Agenda, AgendaVO
 
 app = FastAPI()
 
@@ -47,7 +47,7 @@ def consulta_agenda():
     POST - /
 """
 @app.post("/")
-def cadastra_agenda(novaAgenda: NovaAgenda):
+def cadastra_agenda(novaAgenda: AgendaVO):
     agenda = Agenda(id=0,
                     titulo=novaAgenda.titulo,
                     descricao=novaAgenda.descricao,
