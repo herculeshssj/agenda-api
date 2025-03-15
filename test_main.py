@@ -2,10 +2,8 @@
     Testes unitários para a API da agenda.
 """
 
-import pytest
 from fastapi.testclient import TestClient
 from main import app
-from model import AgendaVO, EstadoAgenda
 
 
 client = TestClient(app)

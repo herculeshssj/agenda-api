@@ -23,8 +23,22 @@ python -m venv venv
 
 Ative o ambiente virtual:
 
+_Linux_
+
 ```sh
 source venv/bin/activate
+```
+
+_Windows_
+
+```sh
+.\venv\Scripts\Activate.ps1
+```
+
+*Obs:* No Windows é necessário permitir a execução de scripts PowerShell. Habilite rodando em um terminal PowerShell como administrador:
+
+```sh
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
 **Dependências**
