@@ -57,3 +57,13 @@ def deletar_agenda(id: int):
         cursor = conn.cursor()
         cursor.execute('DELETE FROM agenda WHERE id = ?', (id,))
         conn.commit()
+
+
+"""
+    Método para atualizar o status de uma agenda.
+"""
+def atualizar_status_agenda(id: int, status: str):
+    with closing(sqlite3.connect('agenda.sqlite')) as conn:
+        cursor = conn.cursor()
+        cursor.execute('UPDATE agenda SET estado_atual_agenda = ? WHERE id = ?', (status, id))
+        conn.commit()

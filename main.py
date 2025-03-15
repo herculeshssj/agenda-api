@@ -89,9 +89,22 @@ def exclui_agenda(id: int):
     return {"mensagem": "Agenda excluída com sucesso"}
     
 
-
 """
+    Altera o status de uma agenda.
+
     PATCH - /{id}/{status}
 """
-def atualiza_status_agenda():
-    pass
+@app.patch("/{id}/{status}")
+def atualiza_status_agenda(id: int, status: str):
+    switcher = {
+        "recebido": EstadoAgenda.Recebido.value,
+        "confirmado": EstadoAgenda.Confirmado.value,
+        "atendido": EstadoAgenda.Atendido.value,
+        "cancelado": EstadoAgenda.Cancelado.value
+    }
+    status = switcher.get(status, "Status inválido")
+    if status == "Status inválido":
+        return {"mensagem": status}
+
+    db.atualizar_status_agenda(id, status)
+    return {"mensagem": "Status da agenda atualizado com sucesso"}
